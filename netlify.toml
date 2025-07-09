@@ -1,0 +1,12 @@
+# netlify.toml
+
+# 告訴 Netlify 你的 functions 放在哪個目錄
+[functions]
+  directory = "netlify/functions/"
+
+# 設定重寫規則，將 /api/* 的請求導向到 .netlify/functions/*
+# 這讓你的前端呼叫 API 的路徑可以和 Vercel 保持一致
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200 # 這是重寫 (rewrite)，不是重定向 (redirect)
